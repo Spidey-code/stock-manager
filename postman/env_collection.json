@@ -1,0 +1,21 @@
+{
+	"id": "63bde680-de34-4b56-a9a5-0678b959ea9d",
+	"name": "local",
+	"values": [
+		{
+			"key": "server",
+			"value": "http://localhost:3001",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2024-05-16T15:59:22.134Z",
+	"_postman_exported_using": "Postman/11.1.2"
+}

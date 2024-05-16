@@ -1,0 +1,306 @@
+{
+	"info": {
+		"_postman_id": "687ac791-e6f9-4dc4-aacd-fb80cb172d4d",
+		"name": "stock-manager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34963205"
+	},
+	"item": [
+		{
+			"name": "get me",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"66450ddd87cdd0069d2bdaaa\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/me",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signup",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is a JSON object\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if response contains tokens object\", function () {\r",
+							"    pm.expect(pm.response.json().data.tokens).to.exist;\r",
+							"});\r",
+							"\r",
+							"var token = pm.response.json().data.tokens.accessToken;\r",
+							"pm.environment.set(\"token\", token);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ4eXouY29tIiwic3ViIjoiNjY0NWIxNGRiOTQ1YmNlODhiZjJlZWE4IiwiaXNzIjoiYXBpLmRldi54eXouY29tIiwiaWF0IjoxNzE1ODQzNDEzLCJleHAiOjE3MTYwMTYyMTMsInBybSI6ImM1MTBhN2Q4NmI0YzI5OGZmNWY0ZGI0YjkyM2FlZDA0MDY0YjQyYTY3NzBkMTlkYWQzM2RmYWU0ZGQ0ODk2ZTA3YjcwOTFjOTNmYzRmZDI2ZDI2Yzc2YzlkY2JiZWFiN2RhZTMxZDI1MGI3NzQ2ZmIwYmNjNDQ5OTIzNWZiNDk5In0.DdAYVNNIOczyCEa5knN-kyzvSQvtx0j9jjBy-KBugf-3kkY7v5vat9a8BzTwUL0A-9VTcFY9Yyvo_utSHxVomz_Fv2o_s20hfFZItUTOoAS7JA3k8UyEpi4kQNpspwSeN0yZuy_HNaMiYgZfs-QYW7VXqbl6hf-q6bYQ_qyVM16kW3XAPlhaeIeUg7OARUMsNbjwz2ocUvdOJN7ksUTrp35b-WNpUEZLZAkPUqPNDTglWAaQ9Gz92lJ3dyKrs64KNT34t-8Tsj28SrC27ZJ80tSYY8Tu4O161uvEtNSvnCPhfKv6BjMU5xnZZmlvldaE4AWxK4HSl40ThSjoV0a8vA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Raju\",\r\n    \"email\": \"mail11@com.com\",\r\n    \"password\": \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/signup",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is a JSON object\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if response contains tokens object\", function () {\r",
+							"    pm.expect(pm.response.json().data.tokens).to.exist;\r",
+							"});\r",
+							"\r",
+							"var token = pm.response.json().data.tokens.accessToken;\r",
+							"pm.environment.set(\"token\", token);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"packages": {},
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"mail@com.com\",\r\n    \"password\": \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/login",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "seed",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/stock/seed",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"stock",
+						"seed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all stocks",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/stock",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"stock"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get portfolio",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/portfolio",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"portfolio"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add to portfolio",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"stockId\": \"6646024af6b8916f6894024b\",\r\n    \"quantity\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/portfolio/buy",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"portfolio",
+						"buy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "portfolio sell",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"66461d0722b5b8b3714e0d7c\",\r\n    \"quantity\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/portfolio/sell",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"portfolio",
+						"sell"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,32 @@
+{
+  "name": "stock-manager",
+  "version": "1.0.0",
+  "description": "Stock manager to handle stocks",
+  "main": "app.js",
+  "scripts": {
+    "start": "npm run build && npm run serve",
+    "serve": "node -r dotenv/config build/app.js",
+    "build": "npm run clean && npm run build-ts",
+    "clean": "rimraf ./build",
+    "build-ts": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "joi": "^17.13.1",
+    "jsonwebtoken": "^9.0.2",
+    "lodash": "^4.17.21",
+    "mongoose": "^8.3.5",
+    "rimraf": "^5.0.7"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/lodash": "^4.17.1",
+    "@types/node": "^20.12.12"
+  }
+}
